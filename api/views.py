@@ -1,11 +1,13 @@
-from django.shortcuts import render 
-from rest_framework.response import Response
+from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import JsonResponse
 from rest_framework.generics import ListAPIView
 from django.db import connection, transaction
 
 from .models import Bank
 from .serializers import ApiSerializer
+
+
 
 
 
@@ -45,8 +47,8 @@ class BranchesApiView(ListAPIView):
             return HttpResponse(status=400)
 
         queryset = self.get_queryset()
-        serializer = ApiSerializer(list(queryset),many=True)
-        return Response(serializer.data)        
+        serializer_response = ApiSerializer(list(queryset),many=True)
+        return JsonResponse(serializer_response.data,safe=False)       
 
 class BankApiView(ListAPIView):
     serializer_class = ApiSerializer
@@ -84,5 +86,5 @@ class BankApiView(ListAPIView):
             return HttpResponse(status=400)
 
         queryset = self.get_queryset()
-        serializer = ApiSerializer(list(queryset),many=True)
-        return Response(serializer.data)        
+        serializer_response = ApiSerializer(list(queryset),many=True)
+        return JsonResponse(serializer_response.data,safe=False)        
