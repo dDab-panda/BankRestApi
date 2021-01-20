@@ -72,7 +72,6 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     # CORS
     'corsheaders.middleware.CorsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -165,7 +164,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
-STATIC_ROOT = os.path.join(BASE_DIR, '../app/staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 CORS_ORIGIN_ALLOW_ALL = True
