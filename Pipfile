@@ -9,6 +9,8 @@ psycopg2 = "*"
 django-cors-headers = "*"
 django-environ = "*"
 djangorestframework = "*"
+django-heroku = "*"
+gunicorn = "*"
 
 [dev-packages]
 
