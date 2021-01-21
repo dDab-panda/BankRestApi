@@ -26,7 +26,7 @@ class BranchesApiView(ListAPIView):
             no_selection=[]
             return no_selection
 
-        query = "Select * from api_bank where branch like '%"+header1+"%' ORDER BY ifsc Limit "+header2+" OFFSET "+header3           
+        query = "Select * from bank_branches where branch like '%"+header1+"%' ORDER BY ifsc Limit "+header2+" OFFSET "+header3           
         cursor = connection.cursor()
         cursor.execute(query)
         transaction.commit()
@@ -65,7 +65,7 @@ class BankApiView(ListAPIView):
             no_selection=[]
             return no_selection
 
-        query = "SELECT * FROM api_bank WHERE \"ifsc\" like '%"+header1+"%' OR branch like '%"+header1+"%' OR address like '%"+header1+"%' OR city like '%"+header1+"%' OR district like '%"+header1+"%' OR state like '%"+header1+"%' ORDER BY ifsc Limit "+header2+" OFFSET "+header3           
+        query = "SELECT * FROM bank_branches WHERE \"ifsc\" like '%"+header1+"%' OR branch like '%"+header1+"%' OR address like '%"+header1+"%' OR city like '%"+header1+"%' OR district like '%"+header1+"%' OR state like '%"+header1+"%' ORDER BY ifsc Limit "+header2+" OFFSET "+header3           
         cursor = connection.cursor()
         cursor.execute(query)
         transaction.commit()
